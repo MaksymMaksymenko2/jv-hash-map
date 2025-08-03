@@ -56,7 +56,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     }
 
     private int getIndex(K key, int capacity) {
-        return (key == null) ? 0 : Math.abs(key.hashCode() % capacity);
+        return (key == null) ? 0 : (key.hashCode() & 0x7FFFFFFF) % capacity;
     }
 
     private boolean areKeysEqual(K key1, K key2) {
